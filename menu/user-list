@@ -24,5 +24,5 @@ do
 JUMLAH="$(awk -F: '$3 >= 1000 && $1 != "nobody" {print $1}' /etc/passwd | wc -l)"
 done < /etc/passwd
 echo "--------------------------------------------------"
-echo " ONLINE : $ON     OFFLINE : $OFF     TOTAL USER : $JUMLAH "
+echo " OFFLINE : $OFF     ONLINE : $ON     TOTAL USER : $JUMLAH "
 echo "--------------------------------------------------"
