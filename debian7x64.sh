@@ -113,9 +113,9 @@ cd /etc/openvpn/
 wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/via-valen/cantik/master/conf/1194-client.conf"
 sed -i $myip2 /etc/openvpn/1194-client.ovpn;
 PASS= `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
-useradd -M -s /bin/false deenie11
-echo "deenie11:$PASS" | chpasswd
-echo "deenie11" > pass.txt
+useradd -M -s /bin/false xxxxx
+echo "xxxxx:$PASS" | chpasswd
+echo "xxxxx" > pass.txt
 echo "$PASS" >> pass.txt
 tar cf client.tar 1194-client.ovpn
 cp client.tar /home/vps/public_html/
