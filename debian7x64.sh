@@ -67,14 +67,14 @@ echo "/usr/sbin/nologin" >> /etc/shells
 # squid3
 apt-get update
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/squid/squid.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/via-valen/cantik/master/squid/squid.conf"
 sed -i "s/ipserver/$myip/g" /etc/squid3/squid.conf
 chmod 0640 /etc/squid3/squid.conf
 
 # text warna
 cd
 rm -rf .bashrc
-wget https://raw.githubusercontent.com/deeniedoank/autoscript2/master/text%20warna/.bashrc
+wget https://raw.githubusercontent.com/via-valen/cantik/master/text%20warna/.bashrc
 
 # text pelangi
 sudo apt-get install ruby -y
@@ -84,23 +84,23 @@ sudo gem install lolcat
 apt-get -y install nginx php5-fpm php5-cli
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/conf/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/via-valen/cantik/master/conf/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by YusufArdiansyah | telegram : e-Server | Pin BBM : yu-suf</pre>" > /home/vps/public_html/index.php
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/conf/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/via-valen/cantik/master/conf/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 
 # install openvpn
 apt-get install openvpn -y
-wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/deeniedoank/autoscript2/master/conf/openvpn-debian.tar"
+wget -O /etc/openvpn/openvpn.tar "https://raw.github.com/via-valen/cantik/master/conf/openvpn-debian.tar"
 cd /etc/openvpn/
 tar xf openvpn.tar
-wget -O /etc/openvpn/1194.conf "https://raw.github.com/deeniedoank/autoscript2/master/conf/1194.conf"
+wget -O /etc/openvpn/1194.conf "https://raw.github.com/via-valen/cantik/master/conf/1194.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
-wget -O /etc/iptables.conf "https://raw.github.com/deeniedoank/autoscript2/master/conf/iptables.conf"
+wget -O /etc/iptables.conf "https://raw.github.com/via-valen/cantik/master/conf/iptables.conf"
 sed -i '$ i\iptables-restore < /etc/iptables.conf' /etc/rc.local
 
 myip2="s/ipserver/$myip/g";
@@ -110,7 +110,7 @@ service openvpn restart
 
 # configure openvpn client config
 cd /etc/openvpn/
-wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/deeniedoank/autoscript2/master/conf/1194-client.conf"
+wget -O /etc/openvpn/1194-client.ovpn "https://raw.github.com/via-valen/cantik/master/conf/1194-client.conf"
 sed -i $myip2 /etc/openvpn/1194-client.ovpn;
 PASS= `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 15 | head -n 1`;
 useradd -M -s /bin/false deenie11
@@ -135,7 +135,7 @@ service ssh restart
 service dropbear restart
 
 # bannerssh
-wget https://raw.githubusercontent.com/deeniedoank/autoscript2/master/menu/bannersshlink.sh
+wget https://raw.githubusercontent.com/via-valen/cantik/master/menu/bannersshlink.sh
 chmod 700 bannersshlink.sh
 ./bannersshlink.sh
 
@@ -176,31 +176,31 @@ service vnstat restart
 
 # user-list
 #cd
-#wget "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/menu/user-list"
+#wget "https://raw.githubusercontent.com/via-valen/cantik/master/menu/user-list"
 #mv ./user-list /usr/local/bin/user-list
 #chmod +x /usr/local/bin/user-list
 
 
 # Install Monitor
 #cd
-#wget "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/menu/monssh"
+#wget "https://raw.githubusercontent.com/via-valen/cantik/master/menu/monssh"
 #mv monssh /usr/local/bin/
 #chmod +x /usr/local/bin/monssh
 
 # antiddos
-wget https://raw.githubusercontent.com/deeniedoank/autoscript2/master/antiddos/install.sh
+wget https://raw.githubusercontent.com/via-valen/cantik/master/antiddos/install.sh
 chmod 700 install.sh
 ./install.sh
 
 #clearcache cranjob
 #sudo apt-get install cron
-#wget https://raw.githubusercontent.com/deeniedoank/autoscript2/master/clearcache/crontab
+#wget https://raw.githubusercontent.com/via-valen/cantik/master/clearcache/crontab
 #mv crontab /etc/
 #chmod 644 /etc/crontab
 #clear cache
 
 #cd
-#wget https://raw.githubusercontent.com/deeniedoank/autoscript2/master/clearcache/clearcache.sh
+#wget https://raw.githubusercontent.com/via-valen/cantik/master/clearcache/clearcache.sh
 #mv clearcache.sh /root/
 #chmod 755 /root/clearcache.sh
 
@@ -211,18 +211,18 @@ iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 # speedtest
 cd
 apt-get install python
-wget -O speedtest.py "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/menu/speedtest.py"
+wget -O speedtest.py "https://raw.githubusercontent.com/via-valen/cantik/master/menu/speedtest.py"
 chmod +x speedtest.py
 
 # Install Menu
 cd
-wget "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/menu/menu"
+wget "https://raw.githubusercontent.com/via-valen/cantik/master/menu/menu"
 mv ./menu /usr/local/bin/menu
 chmod +x /usr/local/bin/menu
 
 # moth
 cd
-wget "https://raw.githubusercontent.com/deeniedoank/autoscript2/master/menu/motd"
+wget "https://raw.githubusercontent.com/via-valen/cantik/master/menu/motd"
 mv ./motd /etc/motd
 
 
